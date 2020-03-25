@@ -1,0 +1,10 @@
+.idea
+.vscode
+.vscode/
+.DS_Store
+.idea/*
+!README.md
+.htaccess
+none
+node_modules/
+npm-debug.log
