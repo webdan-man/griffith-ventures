@@ -1,0 +1,262 @@
+@media all and (max-width: 768px) {
+  .menu_button {
+    display: block;
+  }
+  .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    width: 100%;
+    margin: 0;
+    z-index: 4;
+    display: none;
+    &.open{
+      display: block;
+    }
+    .wrap {
+      height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 30px 40px;
+      align-items: flex-start;
+      .logo {
+      }
+      .menu_button {
+        margin-top: 7px;
+      }
+      nav {
+        width: 100%;
+        margin-bottom: 105px;
+        padding-left: 20px;
+        ul {
+          flex-direction: column;
+          li {
+            margin: 20px 0 19px;
+            a {
+              font-size: 32px;
+              line-height: 39px;
+              padding-left: 35px;
+              &:before {
+                width: 12px;
+                height: 12px;
+                top: 14px;
+                left: 0;
+                margin-left: 0;
+              }
+            }
+          }
+        }
+        .social-button {
+          margin-top: 80px;
+          margin-left: 20px;
+          a {
+            width: 32px;
+            height: 32px;
+            margin: 0 15px;
+          }
+        }
+      }
+    }
+  }
+  header, section, footer {
+    .wrap {
+      max-width: 100%;
+      padding: 0 38px;
+    }
+  }
+  header {
+    z-index: 3;
+    nav {
+      display: none;
+    }
+  }
+  section {
+    .slide-group {
+      width: 100%;
+      margin: 0;
+      height: calc(100vh - 15px);
+      padding: 125px 0 0 40px;
+      h2 {
+        font-size: 48px;
+        line-height: 60px;
+      }
+    }
+    .composition {
+      position: absolute;
+      margin: 0;
+      bottom: 0px;
+      right: 5px;
+      width: 599px;
+      height: 602px;
+    }
+    &.section {
+      h3 {
+        font-size: 38px;
+        line-height: 70px;
+        &:before {
+          left: -40px;
+          width: 24px;
+        }
+      }
+      .block {
+        h4 {
+          font-size: 18px;
+          line-height: 22px;
+        }
+      }
+      .paragraph {
+        br {
+          display: none;
+        }
+      }
+    }
+    &#home {
+      .wrap {
+        .carousel {
+          margin-top: 0;
+        }
+        .slide {
+          position: relative;
+        }
+        .slide1 {
+          .composition {
+            background-image: url("../img/composition1_table.png");
+          }
+        }
+        .slide2 {
+          .composition {
+            background-image: url("../img/composition2_table.png");
+          }
+        }
+        .slide3 {
+          .composition {
+            background-image: url("../img/composition3_table.png");
+          }
+        }
+      }
+    }
+    &#success {
+      h3 {
+        margin-top: -80px;
+      }
+      .block {
+        margin-top: 50px;
+        .item {
+          width: 210px;
+          height: 350px;
+          .group {
+            h4 {
+              font-size: 18px;
+              line-height: 22px;
+            }
+          }
+          p {
+            font-size: 12px;
+            line-height: 18px;
+          }
+        }
+      }
+    }
+    &#process {
+      h3 {
+        margin-top: 0;
+      }
+      .wrap {
+        margin-bottom: 160px;
+      }
+      .block {
+        margin-top: 75px;
+        .item {
+          .img {
+
+          }
+          .group {
+            padding: 19px 29px;
+            p {
+              margin-top: 6px;
+            }
+          }
+        }
+      }
+    }
+    &#why {
+      .wrap {
+        margin-bottom: 130px;
+      }
+      h3 {
+        margin-top: 0;
+      }
+      .block {
+        margin-top: 145px;
+        .item {
+          width: 210px;
+          &:nth-of-type(2) {
+            margin-top: 110px;
+          }
+          &:nth-of-type(3) {
+            margin-top: 220px;
+          }
+          p {
+            font-size: 12px;
+            line-height: 18px;
+          }
+        }
+      }
+    }
+    &#expertise {
+      h3 {
+        margin-top: 0;
+      }
+      .wrap {
+        margin-bottom: 225px;
+      }
+      .block {
+        margin-top: 220px;
+        .item {
+          width: 210px;
+          height: 288px;
+          .img {
+            padding: 16px 21px;
+            h4 {
+              font-size: 18px;
+              line-height: 26px;
+            }
+          }
+        }
+      }
+    }
+    &#partners {
+      h3 {
+        margin-top: 0;
+      }
+      .wrap {
+        margin-bottom: 110px;
+      }
+      .block {
+        margin-top: 85px;
+        .item {
+          width: 330px;
+        }
+      }
+    }
+    &#contact {
+      h3 {
+        margin-top: 0;
+      }
+      .wrap {
+        margin-bottom: 85px;
+      }
+      .block {
+        margin-top: 60px;
+      }
+      form {
+        width: 100%;
+      }
+    }
+  }
+}

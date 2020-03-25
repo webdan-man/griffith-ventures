@@ -1,0 +1,262 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset='UTF-8')
+        meta(http-equiv="Content-Type", content="text/html;charset=UTF-8")
+        meta(name="description" content="Griffith Ventures")
+        meta(name="keywords" content="Griffith Ventures")
+        title Griffith Ventures
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+        link(href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet")
+        link(href='https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css', rel="stylesheet", type="text/css")
+    body
+        //#maket
+        .menu
+        header
+            .wrap
+                a(href='./').logo
+                    img(src=require("../img/logo.svg"), height="40", width="160", alt="Griffith Ventures")
+                .menu_button
+                    span
+                    span
+                    span
+                    span
+                nav
+                    ul
+                        -
+                            var list = [
+                                {value: 'Home', class: 'active', href: '#home'},
+                                {value: 'Success', href: '#success'},
+                                {value: 'Investment Process', href: '#process'},
+                                {value: 'Why Us', href: '#why'},
+                                {value: 'Expertise', href: '#expertise'},
+                                {value: 'Partners', href: '#partners'},
+                                {value: 'Contact Us', href: '#contact'}
+                            ]
+                        each item in list
+                            li
+                                a(class= (item.class ? item.class : ''), href= item.href)= item.value
+        #full-page
+            section#home
+                .wrap
+                    .carousel
+                        .slide.slide1
+                            .slide-group
+                                h2
+                                    span We aim to
+                                    br
+                                    | transform and
+                                    br
+                                    | empower industries
+                                ul.list-group
+                                    li.item.active(data-index='0')
+                                        span
+                                    li.item(data-index='1')
+                                        span
+                                    li.item(data-index='2')
+                                        span
+                            .composition
+                        .slide.slide2
+                            .slide-group
+                                h2
+                                    span We use the most
+                                        br
+                                        | innovative analytical
+                                        br
+                                        | strategies to detect
+                                    br
+                                    | the right time for the
+                                    br
+                                    | right investment
+                                ul.list-group
+                                    li.item(data-index='0')
+                                        span
+                                    li.item.active(data-index='1')
+                                        span
+                                    li.item(data-index='2')
+                                        span
+                            .composition
+                        .slide.slide3
+                            .slide-group
+                                h2
+                                    span We help to realize
+                                    br
+                                    | ideas that were never
+                                    br
+                                    | before possible
+                                ul.list-group
+                                    li.item(data-index='0')
+                                        span
+                                    li.item(data-index='1')
+                                        span
+                                    li.item.active(data-index='2')
+                                        span
+                            .composition
+            section.section#success
+                .wrap
+                    h3 Aiming For Your Success
+                    p.paragraph Established in 2014, Griffith Ventures is oriented at seeking out the most promising, disruptive and innovative
+                        br
+                        | projects on the market. With the team of world-class analytics and market professionals, we provide new
+                        br
+                        | technologies, products, and visions with the needed financial support and insights.
+                    .block
+                        -
+                            var list = [
+                                {img: require('../img/airplane.svg'), title: 'Fast', text: 'Griffith Ventures was established with a goal to provide support in the easiest and quickest way possible. With years of entrepreneurial experience under our belts, we are fast to recognize the promise and provide you with full financial, and advisory support. With the benefits brought to you by our web of investors, you will always be one step ahead.'},
+                                {img: require('../img/analysis.svg'), title: 'Powerful', text: 'We have used our experience to create a powerful model to make smarter co-investment decisions. With a worldwide network of investors, we are committed to expanding the development and adoption of innovative technologies through early-stage investments, advisory services, markets, and trading.'},
+                                {img: require('../img/briefcase.svg'), title: 'Experienced', text: 'Griffith Ventures was founded and is led by a skilled team with years of entrepreneurial, research, technological development and investment experience. Our management strength in predictive analytics helps us to recognize the most profitable and promising investment.'},
+                            ]
+                        each item in list
+                            .item.card
+                                .group
+                                    .img
+                                        img(src= item.img, height="48", width="48", alt="Griffith Ventures")
+                                    h4= item.title
+                                p= item.text
+                    button(type="button" data-href='#contact').button Contact Us
+            section.section#process
+                .wrap
+                    h3 Our Investment Process
+                    p.paragraph With years of experience and a team of experts, we treat every investment deal with due diligence.
+                    .block
+                        -
+                            var list = [
+                                {
+                                    img: require('../img/data_analysis.svg'),
+                                    title: 'Project Analysis',
+                                    text: 'We collect the information and analyze it according to today’s market and demand.'
+                                },
+                                {
+                                    img: require('../img/find.svg'),
+                                    title: 'Technology Diligence',
+                                    text: 'We conduct a thorough external technical diligence validation.'
+                                },
+                                {
+                                    img: require('../img/challenge.svg'),
+                                    title: 'Investment Process',
+                                    text: 'If passed all steps, we help your business start growing right from the bat.'
+                                },
+                            ]
+                        each item in list
+                            .item.card
+                                .img
+                                    img(src= item.img, height="82", width="82", alt="Griffith Ventures")
+                                .group
+                                    h4= item.title
+                                    p= item.text
+            section.section#why
+                .wrap
+                    h3 Why Us?
+                    .block
+                        -
+                            var list = [
+                                {
+                                    title: 'Personal Experienced Approach',
+                                    text: 'We treat every project as our own, and every client as our friend. Being directed at long-term cooperation and strong relationships with our clients, we put to work 10+ professional experience in varying spheres, from investments and banks, to market knowledge and finances.'
+                                },
+                                {
+                                    title: 'Transparency',
+                                    text: 'We work independently and transparently, letting you follow every step of the way. We consult you and explain every little detail in order to make sure you realize what’s best for your business and project.'
+                                },
+                                {
+                                    title: 'Strong Network',
+                                    text: 'Gained over the years of work, we have an extensive network of investors and partners across the globe. We touch over 100 companies and entrepreneurs in the blockchain sector only, with many more partners from other spheres.'
+                                },
+                            ]
+                        each item in list
+                            .item
+                                h4= item.title
+                                p= item.text
+            section.section#expertise
+                .wrap
+                    h3 Our Expertise
+                    .block
+                        -
+                            var list = [
+                                {
+                                    title: 'Analytics &\n\ Consultancy',
+                                    text: 'We are happy to share our knowledge and experience with our clients: we provide market insights, detailed analytics of the given project, growth strategies, legal consultancy and more.'
+                                },
+                                {
+                                    title: 'Capital\n\ support',
+                                    text: 'Griffith Ventures is a strong network of investors, ready to help with growing the riskiest and most groundbreaking ideas out there. We are flexible with respect to stage, asset type, and geography.'
+                                },
+                                {
+                                    title: 'Community\n\ events',
+                                    text: 'We love helping our clients host events. In our portfolio regular conferences, community happy hours, protocol meetups and more!'
+                                },
+                            ]
+                        each item in list
+                            .item.card
+                                .img
+                                    h4= item.title
+                                p= item.text
+            section.section#partners
+                .wrap
+                    h3 Partners
+                    .block
+                        -
+                            var list = [
+                                {
+                                    img: require('../img/ethereum.png'),
+                                    text: 'The decentralized platform that runs smart contracts'
+                                },
+                                {
+                                    img: require('../img/emerald.png'),
+                                    text: 'Producer of medical cannabis with decades'
+                                },
+                                {
+                                    img: require('../img/canopy_growth.png'),
+                                    text: 'Cannabis company based in Ontario'
+                                },
+                                {
+                                    img: require('../img/hiv.png'),
+                                    text: 'Building a bridge from the blockchain sector to traditional markets'
+                                },
+                                {
+                                    img: require('../img/tilray.png'),
+                                    text: 'Canadian pharmaceutical and cannabis company'
+                                },
+                            ]
+                        each item in list
+                            .item.card
+                                .img
+                                    img(src= item.img, alt="Griffith Ventures")
+                                .group
+                                    p= item.text
+                                    a.arrow
+            section.section#contact
+                .wrap
+                    h3 Contact Us
+                    .block
+                        button(type="button").active Investor?
+                        button(type="button") Startup?
+                    form
+                        .input
+                            input
+                            label Your Name
+                        .input
+                            input
+                            label Your E-mail
+                        .input
+                            input
+                            label Subject
+                        .input
+                            textarea
+                            label Your Message
+                        button.button(type='submit') Join the network
+        footer
+            .wrap
+                .button
+                    span Scroll down
+                .social-button
+                    a(href='./').facebook
+                        img(src=require("../img/facebook.svg"), alt="Griffith Ventures")
+                    a(href='./').twitter
+                        img(src=require("../img/twitter.svg"), alt="Griffith Ventures")
+
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+        //script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.10/jquery.lazy.min.js")
+        script(src='https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js')
+        //script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js")

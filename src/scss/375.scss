@@ -1,0 +1,248 @@
+@media all and (max-width: 375px) {
+  body {
+    overflow: auto;
+  }
+  header, section, footer {
+    .wrap {
+      max-width: 100%;
+      padding: 0 15px;
+    }
+  }
+  .menu {
+    .wrap {
+      padding: 30px 15px;
+      nav {
+        margin-bottom: 77px;
+        padding-left: 0;
+        ul {
+          li {
+            margin: 14px 0 15px;
+            a {
+              font-size: 24px;
+              line-height: 29px;
+              padding-left: 37px;
+              &:before {
+                width: 10px;
+                height: 10px;
+                top: 9px;
+                left: 2px;
+              }
+            }
+          }
+        }
+        .social-button {
+          margin-top: 65px;
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+  section {
+    min-height: 100%;
+    height: auto;
+    padding-bottom: 50px;
+    .slide-group {
+      padding: 127px 0 0 15px;
+      h2 {
+        font-size: 28px;
+        line-height: 42px;
+      }
+    }
+    .composition {
+      width: 369px;
+      height: 358px;
+      right: 7px;
+      bottom: -7px;
+    }
+    &.section {
+      h3 {
+        font-size: 24px;
+        &:before {
+          display: none;
+        }
+      }
+      .block {
+        h4 {
+        }
+      }
+      .paragraph {
+        font-size: 14px;
+        line-height: 24px;
+        margin-top: 0;
+        br {
+        }
+      }
+    }
+    &#home {
+      padding-bottom: 0;
+      min-height: 812px;
+      .wrap {
+        .slide1 {
+          .list-group {
+            margin-top: 91px;
+            margin-left: -10px;
+            li {
+              &:before {
+                height: 152px;
+              }
+              span {
+                margin-top: 15px;
+              }
+            }
+          }
+          .composition {
+            background-image: url("../img/composition1_mobile.png");
+          }
+        }
+        .slide2 {
+          .list-group {
+            margin-top: 50px;
+            margin-left: -10px;
+            li {
+              &:before {
+                height: 66px;
+              }
+              span {
+                margin-top: 15px;
+              }
+            }
+          }
+          .composition {
+            background-image: url("../img/composition2_mobile.png");
+          }
+        }
+        .slide3 {
+
+          .list-group {
+            margin-top: 91px;
+            margin-left: -10px;
+            li {
+              &:before {
+                height: 152px;
+              }
+              span {
+                margin-top: 15px;
+              }
+            }
+          }
+          .composition {
+            background-image: url("../img/composition3_mobile.png");
+          }
+        }
+      }
+    }
+    &#success {
+      h3 {
+        margin-top: 41px;
+      }
+      .block {
+        margin-top: 35px;
+        flex-direction: column;
+        .item {
+          width: 100%;
+          height: 240px;
+          margin: 10px 0;
+        }
+      }
+      .button {
+        margin-top: 30px;
+      }
+    }
+    &#process {
+      .wrap {
+        margin: 0;
+      }
+      h3 {
+        margin-top: 51px;
+      }
+      .block {
+        margin-top: 26px;
+        .item {
+          width: 100%;
+          height: 150px;
+          margin: 10px 0;
+          .img {
+            height: 100%;
+          }
+          .group {
+            padding: 18px 20px;
+          }
+        }
+      }
+    }
+    &#why {
+      .wrap {
+        margin: 0;
+      }
+      h3 {
+        margin-top: 50px;
+      }
+      .block {
+        margin-top: 10px;
+        flex-direction: column;
+        .item {
+          width: 100%;
+          margin: 20px 0 17px!important;
+          &:nth-of-type(2), &:nth-of-type(3) {
+            margin-top: 0;
+          }
+          h4 {
+            width: 80%;
+            height: auto;
+          }
+        }
+      }
+    }
+    &#expertise {
+      .wrap {
+        margin: 0;
+      }
+      h3 {
+        margin-top: 44px;
+      }
+      .block {
+        margin-top: 50px;
+        flex-direction: column;
+        .item {
+          width: 100%;
+          margin: 31px 0;
+          height: 178px;
+        }
+      }
+    }
+    &#partners {
+      .wrap {
+        margin: 0;
+      }
+      h3 {
+        margin-top: 42px;
+      }
+      .block {
+        margin-top: 39px;
+        width: 100%;
+        .item {
+          width: 100%;
+          margin: 10px 0;
+        }
+      }
+    }
+    &#contact {
+      .wrap {
+        margin: 0;
+      }
+      h3 {
+        margin-top: 64px;
+      }
+      .block {
+        justify-content: space-between;
+        button {
+          margin: 0;
+          width: 158px;
+        }
+      }
+    }
+  }
+  footer {
+    display: none;
+  }
+}
