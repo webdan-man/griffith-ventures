@@ -8,11 +8,12 @@ a{text-decoration:none;color:inherit;outline:0!important}
 button,input,textarea{outline:0; background: none; border: none;-webkit-tap-highlight-color: rgba(0,0,0,0)}
 body {
   overflow: hidden;
+  text-size-adjust: 100%;
 }
 #maket {
-  background: url(../img/maket_mobile_menu.jpg);
+  background: url(../img/tablet.jpg);
   position: absolute;
-  top: 0;
+  top: -2048px;
   left: 0;
   width: 100%;
   background-repeat: no-repeat;
@@ -36,7 +37,11 @@ header, section, footer {
   }
 }
 .menu {
-  display: none;
+  opacity: 0;
+  transition: all .3s linear;
+  visibility: hidden;
+  position: fixed;
+  z-index: 3;
 }
 header {
   position: fixed;
@@ -73,10 +78,11 @@ nav {
         line-height: 15px;
         text-transform: uppercase;
         position: relative;
+        transition: all 0.35s;
         &:before {
           content: '';
           position: absolute;
-          top: -15px;
+          top: 3px;
           left: 50%;
           width: 6px;
           height: 6px;
@@ -84,11 +90,15 @@ nav {
           margin-left: -3px;
           background-color: #BA9668;
           opacity: 0;
+          transition: all 0.35s;
         }
         &.active, &:hover {
+          transition: all 0.35s;
           color: #BA9668;
           &:before {
+            top: -15px;
             opacity: 1;
+            transition: all 0.35s;
           }
         }
       }
@@ -123,23 +133,7 @@ section {
     }
   }
 
-  .list-group, .slick-dots {
-    //display: flex;
-    //position: absolute;
-    //bottom: 155px;
-    //left: 95px;
-    //justify-content: space-between;
-    //height: 12px;
-    //align-items: center;
-
-    //display: flex;
-    //position: relative;
-    //justify-content: space-between;
-    //height: 12px;
-    //align-items: center;
-    //margin-top: 281px;
-    //width: 120px;
-
+  .list-group {
     display: flex;
     position: relative;
     justify-content: space-between;
@@ -148,7 +142,6 @@ section {
     margin-top: 155px;
     width: 120px;
     margin-left: -15px;
-
     li {
       list-style-type:none;
       display: flex;
@@ -156,6 +149,7 @@ section {
       cursor: pointer;
       position: relative;
       margin: 0 14px;
+      transition: all 0.35s;
       span {
         display: inline-block;
         width: 6px;
@@ -163,25 +157,28 @@ section {
         background: #FFFFFF;
         transform: rotate(-45deg);
         margin-top: 20px;
+        transition: all 0.35s;
       }
       &:before {
         content: '';
         width: 2px;
         display: inline-block;
         margin-left: 5px;
-        //position: absolute;
-        //bottom: 35px;
+        transition: all 0.35s;
       }
-      &.active, &.slick-active, &:hover {
+      &.active, &:hover {
         margin: 0 12px;
+        transition: all 0.35s;
         span {
           width: 12px;
           height: 12px;
           background: #BA9668;
+          transition: all 0.35s;
         }
         &:before {
           background: linear-gradient(180deg, #919294 0%, #BA9668 100%);
           height: 260px;
+          transition: all 0.35s;
         }
       }
     }
@@ -208,7 +205,7 @@ section {
           background-image: url("../img/composition1.png");
         }
 
-        .list-group, .slick-dots {
+        .list-group {
           li {
             &:before {
               height: 260px;
@@ -421,22 +418,36 @@ section {
         text-align: center;
         color: #9D9D9D;
         cursor: pointer;
+        transition: all 0.35s;
         &:after {
           content: '';
           position: absolute;
           height: 4px;
-          background: linear-gradient(0deg, #FFFFFF, #FFFFFF);
+          background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
           bottom: 0;
           left: 0;
           width: 100%;
-          opacity: 0.2;
+          z-index: 2;
+        }
+        &:before {
+          content: '';
+          position: absolute;
+          z-index: 3;
+          width: 100%;
+          height: 4px;
+          bottom: 0;
+          left: 0;
+          opacity: 0;
+          transition: opacity 0.35s;
+          background: linear-gradient(90deg, #919294 0%, #BA9668 100%);
+          box-shadow: 0 5px 10px 0 rgba(25, 25, 25, 0.75);
         }
         &.active, &:hover {
+          transition: all 0.35s;
           color: #BA9668;
-          &:after {
-            background: linear-gradient(90deg, #919294 0%, #BA9668 100%);
+          &:before {
             opacity: 1;
-            box-shadow: 0 5px 10px 0 rgba(25, 25, 25, 0.75);
+            transition: opacity 0.35s;
           }
         }
       }
@@ -462,6 +473,7 @@ section {
           font-weight: normal;
           font-size: 16px;
           line-height: 20px;
+          transition: all 0.35s;
         }
         input, textarea {
           font-size: 16px;
@@ -472,6 +484,7 @@ section {
           height: 60px;
         }
         input:focus + label, textarea:focus + label {
+          transition: all 0.35s;
           top: 0;
           font-size: 10px;
           line-height: 12px;
@@ -557,8 +570,10 @@ section {
       width: 255px;
       height: 60px;
       cursor: pointer;
+      transition: all 0.35s;
       &:hover {
         background: #BA9668;
+        transition: all 0.35s;
       }
     }
     .arrow {
@@ -567,7 +582,9 @@ section {
       height: 80px;
       background-image: url("../img/arrow.svg");
       cursor: pointer;
+      transition: all 0.35s;
       &:hover {
+        transition: all 0.35s;
         background-color: rgba(255, 255, 255, 0.6);
         background-image: url("../img/arrow_hover.svg");
       }

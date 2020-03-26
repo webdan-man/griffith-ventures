@@ -59,3 +59,13 @@
       transform: translateY(100vh);
     }
   }
+
+@keyframes line {
+  from {
+    opacity: 0.2;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

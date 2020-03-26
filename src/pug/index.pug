@@ -224,25 +224,25 @@ html(lang="en")
                                     img(src= item.img, alt="Griffith Ventures")
                                 .group
                                     p= item.text
-                                    a.arrow
+                                    a(href='./').arrow
             section.section#contact
                 .wrap
                     h3 Contact Us
                     .block
                         button(type="button").active Investor?
                         button(type="button") Startup?
-                    form
+                    form(action="ajax/mail.php", method="post", id="form")
                         .input
-                            input
+                            input(type="text", name="name", required)
                             label Your Name
                         .input
-                            input
+                            input(type="email", name="email", required)
                             label Your E-mail
                         .input
-                            input
+                            input(type="text", name="subject", required)
                             label Subject
                         .input
-                            textarea
+                            textarea(name='message', required)
                             label Your Message
                         button.button(type='submit') Join the network
         footer

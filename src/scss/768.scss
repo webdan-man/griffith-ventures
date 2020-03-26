@@ -3,7 +3,6 @@
     display: block;
   }
   .menu {
-    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -12,10 +11,14 @@
     backdrop-filter: blur(10px);
     width: 100%;
     margin: 0;
-    z-index: 4;
-    display: none;
+    opacity: 0;
+    transition: all .3s linear;
+    visibility: hidden;
     &.open{
-      display: block;
+      visibility: visible;
+      opacity: 1;
+      transition: all .3s linear;
+      z-index: 4;
     }
     .wrap {
       height: 100%;
@@ -66,7 +69,7 @@
   header, section, footer {
     .wrap {
       max-width: 100%;
-      padding: 0 38px;
+      padding: 0 40px;
     }
   }
   header {
@@ -76,6 +79,7 @@
     }
   }
   section {
+    min-height: 100vh;
     .slide-group {
       width: 100%;
       margin: 0;
@@ -241,6 +245,7 @@
         margin-top: 85px;
         .item {
           width: 330px;
+          margin: 15px 14px;
         }
       }
     }

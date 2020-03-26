@@ -1,4 +1,4 @@
-import './js/main.js';
+import './js/main.js'
 import './scss/animation.scss'
 import './scss/base.scss'
 import './scss/768.scss'
