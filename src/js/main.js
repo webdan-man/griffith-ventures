@@ -1,6 +1,6 @@
 'use strict';
 document.addEventListener("DOMContentLoaded", function() {
-    const landing = new landingMain();
+   new landingMain();
 });
 
 const landingMain = function () {
@@ -52,20 +52,45 @@ const landingMain = function () {
         }
     };
     const initFullPage = function () {
-        let well = document.getElementById(fullPageId);
-        well.style.transform = 'translateY(0)';
-        well.addEventListener('wheel', function(e) {
-            if (e.deltaY < 0) {
-                scdir = 'down';
-            }
-            if (e.deltaY > 0) {
-                scdir = 'up';
-            }
-            e.stopPropagation();
-        });
+        // let well = document.getElementById(fullPageId);
+        // well.style.transform = 'translateY(0)';
+        // well.addEventListener('wheel', function(e) {
+        //     if (e.deltaY < 0) {
+        //         scdir = 'down';
+        //     }
+        //     if (e.deltaY > 0) {
+        //         scdir = 'up';
+        //     }
+        //     e.stopPropagation();
+        // });
+        //
+        // well.addEventListener('wheel', _scrollY);
+        // _swipe(well);
 
-        well.addEventListener('wheel', _scrollY);
-        _swipe(well);
+        new fullScroll({
+
+            // parent container
+            mainElement : 'full-page',
+
+            // content section
+            sections : 'section',
+
+            // animation speed
+            animateTime : 0.7,
+
+            // easing for animation
+            animateFunction : 'ease',
+
+            // current position
+            currentPosition: 0,
+
+            // display dots navigation
+            displayDots: false,
+
+            // where to place the dots navigation
+            dotsPosition: 'left'
+
+        });
     };
     const _scrollY = function (obj, e) {
         let slength, plength, pan, step = 100, vh = window.innerHeight / 100, vmin = Math.min(window.innerHeight, window.innerWidth) / 100, id;
@@ -189,7 +214,8 @@ $(document).ready(function(){
         e.preventDefault();
         $('nav ul li a').removeClass('active');
         $(this).addClass('active');
-        document.querySelector('#full-page').style.transform = 'translateY(-' + (Array.apply(null, document.querySelector("header").querySelectorAll("a")).findIndex((item) => item.getAttribute("href") === $(this).attr('href')) - 1) * 100 + 'vh)';
+        location.hash = $(this).closest('li').data('index');
+        // document.querySelector('#full-page').style.transform = 'translateY(-' + (Array.apply(null, document.querySelector("header").querySelectorAll("a")).findIndex((item) => item.getAttribute("href") === $(this).attr('href')) - 1) * 100 + 'vh)';
         document.querySelector('.menu').classList.remove('open');
     });
     $('#success.section .button').click(function () {
@@ -201,13 +227,13 @@ $(document).ready(function(){
         var self = $(this);
         $('.carousel').slick('slickGoTo', Number(self.data('index')));
     });
-    if (location.hash) {
-        $("html, body").animate({ scrollTop: $(location.hash).offset().top }, 1000);
-        $('nav ul li a').removeClass('active');
-        $('nav ul li').find('a'+ '[href="' + location.hash + '"]').addClass('active')
-    } else {
-        $("html, body").animate({ scrollTop: $('#home').offset().top }, 1000);
-    }
+    // if (location.hash) {
+    //     $("html, body").animate({ scrollTop: $(location.hash).offset().top }, 1000);
+    //     $('nav ul li a').removeClass('active');
+    //     $('nav ul li').find('a'+ '[href="' + location.hash + '"]').addClass('active')
+    // } else {
+    //     $("html, body").animate({ scrollTop: $('#home').offset().top }, 1000);
+    // }
 
     $('#contact .block button').click(function () {
         $('#contact .block button').removeClass('active');

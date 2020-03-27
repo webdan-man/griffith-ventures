@@ -24,16 +24,16 @@ html(lang="en")
                     ul
                         -
                             var list = [
-                                {value: 'Home', class: 'active', href: '#home'},
-                                {value: 'Success', href: '#success'},
-                                {value: 'Investment Process', href: '#process'},
-                                {value: 'Why Us', href: '#why'},
-                                {value: 'Expertise', href: '#expertise'},
-                                {value: 'Partners', href: '#partners'},
-                                {value: 'Contact Us', href: '#contact'}
+                                {index: 0, value: 'Home', class: 'active', href: '#home'},
+                                {index: 1, value: 'Success', href: '#success'},
+                                {index: 2, value: 'Investment Process', href: '#process'},
+                                {index: 3, value: 'Why Us', href: '#why'},
+                                {index: 4, value: 'Expertise', href: '#expertise'},
+                                {index: 5, value: 'Partners', href: '#partners'},
+                                {index: 6, value: 'Contact Us', href: '#contact'}
                             ]
                         each item in list
-                            li
+                            li(data-index= item.index)
                                 a(class= (item.class ? item.class : ''), href= item.href)= item.value
         #full-page
             section#home

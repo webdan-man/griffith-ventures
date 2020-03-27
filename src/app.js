@@ -1,3 +1,4 @@
+import './js/full-page-scroll'
 import './js/main.js'
 import './scss/animation.scss'
 import './scss/base.scss'
