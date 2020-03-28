@@ -48,7 +48,11 @@ const landingMain = function () {
             }
             createMenuNode();
         } else {
-            initFullPage();
+            if (document.documentElement.clientHeight >= 900) {
+                initFullPage();
+            } else {
+                document.body.style.overflow = 'auto';
+            }
         }
     };
     const initFullPage = function () {
@@ -212,6 +216,10 @@ $(document).ready(function(){
     });
     $('nav ul li a').click(function (e) {
         e.preventDefault();
+        if (document.documentElement.clientHeight < 900) {
+            location.hash = '#' + $(this).closest('li').data('index');
+            $("html, body").animate({ scrollTop: $(this).closest('li').data('index') * 900 }, 1000)
+        }
         $('nav ul li a').removeClass('active');
         $(this).addClass('active');
         location.hash = $(this).closest('li').data('index');
@@ -220,8 +228,9 @@ $(document).ready(function(){
     });
     $('#success.section .button').click(function () {
         $('nav ul li a').removeClass('active');
-        $(this).addClass('active')
-        $("html, body").animate({ scrollTop: $($(this).data('href')).offset().top }, 1000)
+        $('nav ul li').find('a[href="'+$(this).data('href')+'"]').addClass('active');
+        location.hash = '#' + $(this).data('index');
+        $("html, body").animate({ scrollTop: $(this).data('index') * 900 }, 1000)
     });
     $('.carousel .list-group .item').on('click', function() {
         var self = $(this);

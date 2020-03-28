@@ -48,12 +48,12 @@ header {
   left: 0;
   top: 25px;
   z-index: 2;
-  backdrop-filter: blur(10px);
   .wrap {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 5px;
+    backdrop-filter: blur(10px);
     nav {
       width: 675px;
       margin-top: 10px;

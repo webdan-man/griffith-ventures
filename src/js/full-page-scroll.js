@@ -212,6 +212,11 @@
 			this.defaults.container.style.mozTransform = 'translateY(-' + position + 'vh)';
 			this.defaults.container.style.msTransform = 'translateY(-' + position + 'vh)';
 			this.defaults.container.style.transform = 'translateY(-' + position + 'vh)';
+			this.defaults.container.style.webkitTransition = 'all ' + animateTime + 's ' + animateFunction;
+			this.defaults.container.style.mozTransition = 'all ' + animateTime + 's ' + animateFunction;
+			this.defaults.container.style.msTransition = 'all ' + animateTime + 's ' + animateFunction;
+			this.defaults.container.style.transition = 'all ' + animateTime + 's ' + animateFunction;
+
 
 			for (var i = 0; i < this.ul.childNodes.length; i++) {
 					this.ul.childNodes[i].firstChild.className = this.updateClass(2, 'active', this.ul.childNodes[i].firstChild.className);
