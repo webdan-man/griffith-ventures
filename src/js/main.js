@@ -230,7 +230,9 @@ $(document).ready(function(){
         $('nav ul li a').removeClass('active');
         $('nav ul li').find('a[href="'+$(this).data('href')+'"]').addClass('active');
         location.hash = '#' + $(this).data('index');
-        $("html, body").animate({ scrollTop: $(this).data('index') * 900 }, 1000)
+        if (document.documentElement.clientHeight < 900) {
+            $("html, body").animate({scrollTop: $(this).data('index') * 900}, 1000)
+        }
     });
     $('.carousel .list-group .item').on('click', function() {
         var self = $(this);
