@@ -51,6 +51,7 @@ const landingMain = function () {
                 initFullPage();
             } else {
                 document.body.style.overflow = 'auto';
+                activeMenuOnScroll();
             }
         }
     };
@@ -95,6 +96,19 @@ const landingMain = function () {
 
         });
     };
+    const activeMenuOnScroll = function () {
+        $('body').scroll(function() {
+            var scrollDistance = $(window).scrollTop() - $("nav").outerHeight()+30;
+
+            $('section').each(function(i) {
+                if ($(this).position().top <= scrollDistance) {
+                    $('nav a.active').removeClass('active');
+                    $('nav a').eq(i).addClass('active');
+                }
+            });
+        }).scroll();
+    };
+
     const _scrollY = function (obj, e) {
         let slength, plength, pan, step = 100, vh = window.innerHeight / 100, vmin = Math.min(window.innerHeight, window.innerWidth) / 100, id;
         try {
