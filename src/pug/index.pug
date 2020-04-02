@@ -10,6 +10,7 @@ html(lang="en")
         link(href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet")
         link(href='https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css', rel="stylesheet", type="text/css")
     body
+        //#maket
         .menu
         header
             .wrap
@@ -94,11 +95,11 @@ html(lang="en")
             section.section#success
                 .wrap
                     h3 Aiming For Your Success
-                    p.paragraph Established in 2014, Griffith Ventures is oriented at seeking out the most promising, disruptive and innovative
-                        br
-                        | projects on the market. With the team of world-class analytics and market professionals, we provide new
-                        br
-                        | technologies, products, and visions with the needed financial support and insights.
+                    //p.paragraph Established in 2014, Griffith Ventures is oriented at seeking out the most promising, disruptive and innovative
+                    //    br
+                    //    | projects on the market. With the team of world-class analytics and market professionals, we provide new
+                    //    br
+                    //    | technologies, products, and visions with the needed financial support and insights.
                     .block
                         -
                             var list = [
@@ -117,7 +118,7 @@ html(lang="en")
             section.section#process
                 .wrap
                     h3 Our Investment Process
-                    p.paragraph With years of experience and a team of experts, we treat every investment deal with due diligence.
+                    //p.paragraph With years of experience and a team of experts, we treat every investment deal with due diligence.
                     .block
                         -
                             var list = [
@@ -140,7 +141,7 @@ html(lang="en")
                         each item in list
                             .item.card
                                 .img
-                                    img(src= item.img, height="82", width="82", alt="Griffith Ventures")
+                                    img(src= item.img, height="62", width="62", alt="Griffith Ventures")
                                 .group
                                     h4= item.title
                                     p= item.text
@@ -232,18 +233,20 @@ html(lang="en")
                         button(type="button").active Investor?
                         button(type="button") Startup?
                     form(action="ajax/mail.php", method="post", id="form")
-                        .input
-                            input(type="text", name="name", required)
-                            label Your Name
-                        .input
-                            input(type="email", name="email", required)
-                            label Your E-mail
-                        .input
-                            input(type="text", name="subject", required)
-                            label Subject
-                        .input
-                            textarea(name='message', required)
-                            label Your Message
+                        .container
+                            .group
+                                .input
+                                    input(type="text", name="name", required)
+                                    label Your Name
+                                .input
+                                    input(type="email", name="email", required)
+                                    label Your E-mail
+                                .input
+                                    input(type="text", name="subject", required)
+                                    label Subject
+                            .input
+                                textarea(name='message', required)
+                                label Your Message
                         button.button(type='submit') Join the network
         footer
             .wrap

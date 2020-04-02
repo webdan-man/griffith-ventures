@@ -47,7 +47,7 @@ const landingMain = function () {
                 const scale = (window.screen.width / 1440) > 1 ? 1 : window.screen.width / 1440;
                 viewport.setAttribute('content', 'width=1440, initial-scale=' + scale + ', user-scalable=no');
             }
-            if (document.documentElement.clientHeight >= 900) {
+            if (document.documentElement.clientHeight >= 600) {
                 initFullPage();
             } else {
                 document.body.style.overflow = 'auto';
