@@ -107,11 +107,11 @@
 	fullScroll.prototype.addEvents = function () {
 		if (document.addEventListener) {
 			document.addEventListener('mousewheel', this.mouseWheelAndKey, false);
-			document.addEventListener('wheel', this.mouseWheelAndKey, false);
-			document.addEventListener('keyup', this.mouseWheelAndKey, false);
-			document.addEventListener('touchstart', this.touchStart, false);
-			document.addEventListener('touchend', this.touchEnd, false);
-			window.addEventListener("hashchange", this.hashChange, false);
+			// document.addEventListener('wheel', this.mouseWheelAndKey, false);
+			// document.addEventListener('keyup', this.mouseWheelAndKey, false);
+			// document.addEventListener('touchstart', this.touchStart, false);
+			// document.addEventListener('touchend', this.touchEnd, false);
+			// window.addEventListener("hashchange", this.hashChange, false);
 
 			/**
 			 * Enable scroll if decive don't have touch support
