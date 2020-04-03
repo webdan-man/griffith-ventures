@@ -143,9 +143,11 @@
 		this.mouseWheelAndKey = function (event) {
 			console.log(event.deltaY)
 			if (event.deltaY > 20 || event.keyCode == 40) {
+				console.log(1)
 				_self.defaults.currentPosition ++;
 				_self.changeCurrentPosition(_self.defaults.currentPosition);
 			} else if (event.deltaY < -20 || event.keyCode == 38) {
+				console.log(2)
 				_self.defaults.currentPosition --;
 				_self.changeCurrentPosition(_self.defaults.currentPosition);
 			}
