@@ -228,9 +228,9 @@ $(document).ready(function(){
     });
     $('nav ul li a').click(function (e) {
         e.preventDefault();
-        if (document.documentElement.clientHeight < 900) {
+        if (document.documentElement.clientHeight < 600) {
             location.hash = '#' + $(this).closest('li').data('index');
-            $("html, body").animate({ scrollTop: $(this).closest('li').data('index') * 900 }, 1000)
+            $("html, body").animate({ scrollTop: $(this).closest('li').data('index') * 600 }, 1000)
         }
         $('nav ul li a').removeClass('active');
         $(this).addClass('active');
@@ -242,8 +242,8 @@ $(document).ready(function(){
         $('nav ul li a').removeClass('active');
         $('nav ul li').find('a[href="'+$(this).data('href')+'"]').addClass('active');
         location.hash = '#' + $(this).data('index');
-        if (document.documentElement.clientHeight < 900) {
-            $("html, body").animate({scrollTop: $(this).data('index') * 900}, 1000)
+        if (document.documentElement.clientHeight < 600) {
+            $("html, body").animate({scrollTop: $(this).data('index') * 600}, 1000)
         }
     });
     $('.carousel .list-group .item').on('click', function() {
