@@ -108,6 +108,7 @@
 
 		if (document.addEventListener) {
 			document.addEventListener('mousewheel', this.mouseWheelAndKey, false);
+			document.addEventListener('onmousewheel', this.mouseWheelAndKey, false);
 			document.addEventListener('wheel', this.mouseWheelAndKey, false);
 			document.addEventListener('keyup', this.mouseWheelAndKey, false);
 			document.addEventListener('touchstart', this.touchStart, false);
@@ -127,6 +128,7 @@
 
 		} else {
 			document.attachEvent('onmousewheel', this.mouseWheelAndKey, false);
+			document.attachEvent('mousewheel', this.mouseWheelAndKey, false);
 			document.attachEvent('onkeyup', this.mouseWheelAndKey, false);
 		}
 		
@@ -191,6 +193,7 @@
 		this.removeEvents = function () {
 			if (document.addEventListener) {
 			document.removeEventListener('mousewheel', this.mouseWheelAndKey, false);
+			document.removeEventListener('onmousewheel', this.mouseWheelAndKey, false);
 			document.removeEventListener('wheel', this.mouseWheelAndKey, false);
 			document.removeEventListener('keyup', this.mouseWheelAndKey, false);
 			document.removeEventListener('touchstart', this.touchStart, false);
@@ -198,6 +201,7 @@
 
 			} else {
 				document.detachEvent('onmousewheel', this.mouseWheelAndKey, false);
+				document.detachEvent('mousewheel', this.mouseWheelAndKey, false);
 				document.detachEvent('onkeyup', this.mouseWheelAndKey, false);
 			}
 
