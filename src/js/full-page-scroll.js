@@ -142,13 +142,13 @@
 		var _self = this;
 
 		this.mouseWheelAndKey = function (event) {
-			console.log(123)
+			console.log(333)
 			if (event.deltaY > 0 || event.keyCode == 40) {	
 				_self.defaults.currentPosition ++;
-				_self.changeCurrentPosition(_self.defaults.currentPosition);				
+				_self.changeCurrentPosition(_self.defaults.currentPosition);
 			} else if (event.deltaY < 0 || event.keyCode == 38) {
 				_self.defaults.currentPosition --;
-				_self.changeCurrentPosition(_self.defaults.currentPosition);	
+				_self.changeCurrentPosition(_self.defaults.currentPosition);
 			}
 			_self.removeEvents();
 		};
@@ -187,6 +187,7 @@
 		};
 
 		this.removeEvents = function () {
+			console.log(444)
 			if (document.addEventListener) {
 			// document.removeEventListener('mousewheel', this.mouseWheelAndKey, false);
 			document.removeEventListener('wheel', this.mouseWheelAndKey, false);
