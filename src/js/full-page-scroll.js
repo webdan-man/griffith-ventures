@@ -140,7 +140,6 @@
 		var mTouchEnd = 0;
 		var _self = this;
 		var this_deltaY = '';
-		console.log(111)
 		this.mouseWheelAndKey = function (event) {
 			console.log(event.target.closest('section').id)
 			if (this_deltaY !== event.target.closest('section').id) {
@@ -154,6 +153,9 @@
 				_self.removeEvents();
 			}
 			this_deltaY = event.target.closest('section').id;
+			setTimeout(function(){
+				this_deltaY = ''
+			}, 1000);
 		};
 
 		this.touchStart = function (event) {
