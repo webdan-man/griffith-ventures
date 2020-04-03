@@ -141,6 +141,8 @@
 		var _self = this;
 
 		this.mouseWheelAndKey = function (event) {
+
+			_self.removeEvents();
 			console.log(event.deltaY)
 			if (event.deltaY > 20 || event.keyCode == 40) {
 				console.log(1)
@@ -151,7 +153,6 @@
 				_self.defaults.currentPosition --;
 				_self.changeCurrentPosition(_self.defaults.currentPosition);
 			}
-			_self.removeEvents();
 		};
 
 		this.touchStart = function (event) {
