@@ -46,7 +46,6 @@
 	 * Init plugin
 	 */
 	fullScroll.prototype.init = function () {
-		console.log(213)
 		this.buildPublicFunctions()
 			.buildSections()
 			.buildDots()
@@ -142,6 +141,7 @@
 		var _self = this;
 
 		this.mouseWheelAndKey = function (event) {
+			console.log(event.deltaY)
 			if (event.deltaY > 0 || event.keyCode == 40) {	
 				_self.defaults.currentPosition ++;
 				_self.changeCurrentPosition(_self.defaults.currentPosition);
