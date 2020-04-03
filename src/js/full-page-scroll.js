@@ -105,9 +105,10 @@
 	 * @return {Object} this(fullScroll)
 	 */
 	fullScroll.prototype.addEvents = function () {
+		console.log(111)
 
 		if (document.addEventListener) {
-			// document.addEventListener('mousewheel', this.mouseWheelAndKey, false);
+			document.addEventListener('mousewheel', this.mouseWheelAndKey, false);
 			document.addEventListener('wheel', this.mouseWheelAndKey, false);
 			document.addEventListener('keyup', this.mouseWheelAndKey, false);
 			document.addEventListener('touchstart', this.touchStart, false);
@@ -142,7 +143,6 @@
 		var _self = this;
 
 		this.mouseWheelAndKey = function (event) {
-			console.log(333)
 			if (event.deltaY > 0 || event.keyCode == 40) {	
 				_self.defaults.currentPosition ++;
 				_self.changeCurrentPosition(_self.defaults.currentPosition);
@@ -187,9 +187,8 @@
 		};
 
 		this.removeEvents = function () {
-			console.log(444)
 			if (document.addEventListener) {
-			// document.removeEventListener('mousewheel', this.mouseWheelAndKey, false);
+			document.removeEventListener('mousewheel', this.mouseWheelAndKey, false);
 			document.removeEventListener('wheel', this.mouseWheelAndKey, false);
 			document.removeEventListener('keyup', this.mouseWheelAndKey, false);
 			document.removeEventListener('touchstart', this.touchStart, false);
