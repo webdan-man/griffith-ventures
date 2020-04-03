@@ -144,7 +144,6 @@
 		console.log(111)
 		this.mouseWheelAndKey = function (event) {
 			console.log(event.target.closest('section').id)
-			this_deltaY = event.target.closest('section').id;
 			if (this_deltaY !== event.target.closest('section').id) {
 				if (event.deltaY > 0 || event.keyCode == 40) {
 					_self.defaults.currentPosition ++;
@@ -155,6 +154,7 @@
 				}
 				_self.removeEvents();
 			}
+			this_deltaY = event.target.closest('section').id;
 		};
 
 		this.touchStart = function (event) {
