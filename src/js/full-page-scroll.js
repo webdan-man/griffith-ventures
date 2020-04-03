@@ -105,13 +105,13 @@
 	 * @return {Object} this(fullScroll)
 	 */
 	fullScroll.prototype.addEvents = function () {
-		
+
 		if (document.addEventListener) {
-			document.addEventListener('mousewheel', this.mouseWheelAndKey, false);
-			document.addEventListener('wheel', this.mouseWheelAndKey, false);
-			document.addEventListener('keyup', this.mouseWheelAndKey, false);
-			document.addEventListener('touchstart', this.touchStart, false);
-			document.addEventListener('touchend', this.touchEnd, false);
+			document.body.addEventListener('mousewheel', this.mouseWheelAndKey, false);
+			document.body.addEventListener('wheel', this.mouseWheelAndKey, false);
+			document.body.addEventListener('keyup', this.mouseWheelAndKey, false);
+			document.body.addEventListener('touchstart', this.touchStart, false);
+			document.body.addEventListener('touchend', this.touchEnd, false);
 			window.addEventListener("hashchange", this.hashChange, false);
 
 			/**
@@ -153,16 +153,13 @@
 		};
 
 		this.touchStart = function (event) {
-			console.log(event.changedTouches[0].clientY)
 			mTouchStart = parseInt(event.changedTouches[0].clientY);
 			mTouchEnd = 0;
 		};
 
 		this.touchEnd = function (event) {
-			console.log(event.changedTouches[0].clientY)
 			mTouchEnd = parseInt(event.changedTouches[0].clientY);
 			if (mTouchEnd - mTouchStart > 100 || mTouchStart - mTouchEnd > 100) {
-				console.log(123)
 				if (mTouchEnd > mTouchStart) {
 					_self.defaults.currentPosition --;
 				} else {
@@ -190,11 +187,11 @@
 
 		this.removeEvents = function () {
 			if (document.addEventListener) {
-			document.removeEventListener('mousewheel', this.mouseWheelAndKey, false);
-			document.removeEventListener('wheel', this.mouseWheelAndKey, false);
-			document.removeEventListener('keyup', this.mouseWheelAndKey, false);
-			document.removeEventListener('touchstart', this.touchStart, false);
-			document.removeEventListener('touchend', this.touchEnd, false);
+			document.body.removeEventListener('mousewheel', this.mouseWheelAndKey, false);
+			document.body.removeEventListener('wheel', this.mouseWheelAndKey, false);
+			document.body.removeEventListener('keyup', this.mouseWheelAndKey, false);
+			document.body.removeEventListener('touchstart', this.touchStart, false);
+			document.body.removeEventListener('touchend', this.touchEnd, false);
 
 			} else {
 				document.detachEvent('onmousewheel', this.mouseWheelAndKey, false);
