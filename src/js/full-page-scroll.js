@@ -139,21 +139,19 @@
 		var mTouchStart = 0;
 		var mTouchEnd = 0;
 		var _self = this;
+		var scheduled = false;
 
 		this.mouseWheelAndKey = function (event) {
-
-			console.log(event.deltaY)
-			console.log(145)
-			if (event.deltaY > 0 || event.keyCode == 40) {
+			if (scheduled) {
+				scheduled = true
+				if (event.deltaY > 20 || event.keyCode == 40) {
+					_self.defaults.currentPosition ++;
+					_self.changeCurrentPosition(_self.defaults.currentPosition);
+				} else if (event.deltaY < -20 || event.keyCode == 38) {
+					_self.defaults.currentPosition --;
+					_self.changeCurrentPosition(_self.defaults.currentPosition);
+				}
 				_self.removeEvents();
-				console.log(1)
-				_self.defaults.currentPosition ++;
-				_self.changeCurrentPosition(_self.defaults.currentPosition);
-			} else if (event.deltaY < 0 || event.keyCode == 38) {
-				_self.removeEvents();
-				console.log(2)
-				_self.defaults.currentPosition --;
-				_self.changeCurrentPosition(_self.defaults.currentPosition);
 			}
 		};
 
@@ -202,8 +200,9 @@
 				document.detachEvent('onmousewheel', this.mouseWheelAndKey, false);
 				document.detachEvent('onkeyup', this.mouseWheelAndKey, false);
 			}
-
 			setTimeout(function(){
+
+				scheduled = false
 				_self.addEvents();
 			}, 600);
 		};
