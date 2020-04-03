@@ -233,7 +233,6 @@ $(document).ready(function(){
             $('nav ul li a').removeClass('active');
             $(this).addClass('active');
             document.querySelector('.menu').classList.remove('open');
-            console.log($($(this).attr('href')).offset().top)
             $("html, body").animate({ scrollTop: $($(this).attr('href')).offset().top + document.body.scrollTop}, 1000);
 
         });
