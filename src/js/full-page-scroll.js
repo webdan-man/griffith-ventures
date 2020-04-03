@@ -140,9 +140,11 @@
 		var mTouchStart = 0;
 		var mTouchEnd = 0;
 		var _self = this;
+		var this_deltaY = 0;
 
 		this.mouseWheelAndKey = function (event) {
 			console.log(event)
+			this_deltaY = event.deltaY;
 			if (event.deltaY > 0 || event.keyCode == 40) {
 				_self.defaults.currentPosition ++;
 				_self.changeCurrentPosition(_self.defaults.currentPosition);
@@ -199,7 +201,7 @@
 				document.detachEvent('onkeyup', this.mouseWheelAndKey, false);
 			}
 			setTimeout(function(){
-				_self.addEvents();
+				// _self.addEvents();
 			}, 600);
 		};
 
