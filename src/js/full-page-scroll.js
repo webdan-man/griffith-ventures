@@ -106,12 +106,13 @@
 	 */
 	fullScroll.prototype.addEvents = function () {
 		if (document.addEventListener) {
+			console.log(555)
 			document.addEventListener('mousewheel', this.mouseWheelAndKey, false);
-			// document.addEventListener('wheel', this.mouseWheelAndKey, false);
-			// document.addEventListener('keyup', this.mouseWheelAndKey, false);
-			// document.addEventListener('touchstart', this.touchStart, false);
-			// document.addEventListener('touchend', this.touchEnd, false);
-			// window.addEventListener("hashchange", this.hashChange, false);
+			document.addEventListener('wheel', this.mouseWheelAndKey, false);
+			document.addEventListener('keyup', this.mouseWheelAndKey, false);
+			document.addEventListener('touchstart', this.touchStart, false);
+			document.addEventListener('touchend', this.touchEnd, false);
+			window.addEventListener("hashchange", this.hashChange, false);
 
 			/**
 			 * Enable scroll if decive don't have touch support
@@ -139,21 +140,17 @@
 		var mTouchStart = 0;
 		var mTouchEnd = 0;
 		var _self = this;
-		var scheduled = false;
 
 		this.mouseWheelAndKey = function (event) {
-			console.log(!scheduled)
-			if (!scheduled) {
-				scheduled = true
-				if (event.deltaY > 0 || event.keyCode == 40) {
-					_self.defaults.currentPosition ++;
-					_self.changeCurrentPosition(_self.defaults.currentPosition);
-				} else if (event.deltaY < 0 || event.keyCode == 38) {
-					_self.defaults.currentPosition --;
-					_self.changeCurrentPosition(_self.defaults.currentPosition);
-				}
-				_self.removeEvents();
+			console.log(event)
+			if (event.deltaY > 0 || event.keyCode == 40) {
+				_self.defaults.currentPosition ++;
+				_self.changeCurrentPosition(_self.defaults.currentPosition);
+			} else if (event.deltaY < 0 || event.keyCode == 38) {
+				_self.defaults.currentPosition --;
+				_self.changeCurrentPosition(_self.defaults.currentPosition);
 			}
+			_self.removeEvents();
 		};
 
 		this.touchStart = function (event) {
