@@ -107,7 +107,7 @@
 	fullScroll.prototype.addEvents = function () {
 
 		if (document.addEventListener) {
-			document.addEventListener('mousewheel', this.mouseWheelAndKey, false);
+			// document.addEventListener('mousewheel', this.mouseWheelAndKey, false);
 			document.addEventListener('wheel', this.mouseWheelAndKey, false);
 			document.addEventListener('keyup', this.mouseWheelAndKey, false);
 			document.addEventListener('touchstart', this.touchStart, false);
@@ -188,7 +188,7 @@
 
 		this.removeEvents = function () {
 			if (document.addEventListener) {
-			document.removeEventListener('mousewheel', this.mouseWheelAndKey, false);
+			// document.removeEventListener('mousewheel', this.mouseWheelAndKey, false);
 			document.removeEventListener('wheel', this.mouseWheelAndKey, false);
 			document.removeEventListener('keyup', this.mouseWheelAndKey, false);
 			document.removeEventListener('touchstart', this.touchStart, false);
