@@ -46,6 +46,7 @@
 	 * Init plugin
 	 */
 	fullScroll.prototype.init = function () {
+		console.log(213)
 		this.buildPublicFunctions()
 			.buildSections()
 			.buildDots()
@@ -105,8 +106,6 @@
 	 * @return {Object} this(fullScroll)
 	 */
 	fullScroll.prototype.addEvents = function () {
-		console.log(111)
-
 		if (document.addEventListener) {
 			document.addEventListener('mousewheel', this.mouseWheelAndKey, false);
 			document.addEventListener('wheel', this.mouseWheelAndKey, false);
