@@ -155,7 +155,7 @@
 			this_deltaY = event.target.closest('section').id;
 			setTimeout(function(){
 				this_deltaY = ''
-			}, 1000);
+			}, 2500);
 		};
 
 		this.touchStart = function (event) {
