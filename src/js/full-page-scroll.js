@@ -199,8 +199,6 @@
 				document.detachEvent('onkeyup', this.mouseWheelAndKey, false);
 			}
 			setTimeout(function(){
-
-				scheduled = false
 				_self.addEvents();
 			}, 600);
 		};
