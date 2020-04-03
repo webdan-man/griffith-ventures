@@ -140,19 +140,21 @@
 		var mTouchStart = 0;
 		var mTouchEnd = 0;
 		var _self = this;
-		var this_deltaY = 0;
-
+		var this_deltaY = '';
+		console.log(111)
 		this.mouseWheelAndKey = function (event) {
-			console.log(event)
-			this_deltaY = event.deltaY;
-			if (event.deltaY > 0 || event.keyCode == 40) {
-				_self.defaults.currentPosition ++;
-				_self.changeCurrentPosition(_self.defaults.currentPosition);
-			} else if (event.deltaY < 0 || event.keyCode == 38) {
-				_self.defaults.currentPosition --;
-				_self.changeCurrentPosition(_self.defaults.currentPosition);
+			console.log(event.target.closest('section').id)
+			this_deltaY = event.target.closest('section').id;
+			if (this_deltaY !== event.target.closest('section').id) {
+				if (event.deltaY > 0 || event.keyCode == 40) {
+					_self.defaults.currentPosition ++;
+					_self.changeCurrentPosition(_self.defaults.currentPosition);
+				} else if (event.deltaY < 0 || event.keyCode == 38) {
+					_self.defaults.currentPosition --;
+					_self.changeCurrentPosition(_self.defaults.currentPosition);
+				}
+				_self.removeEvents();
 			}
-			_self.removeEvents();
 		};
 
 		this.touchStart = function (event) {
@@ -201,7 +203,7 @@
 				document.detachEvent('onkeyup', this.mouseWheelAndKey, false);
 			}
 			setTimeout(function(){
-				// _self.addEvents();
+				_self.addEvents();
 			}, 600);
 		};
 
