@@ -142,6 +142,7 @@
 		var scheduled = false;
 
 		this.mouseWheelAndKey = function (event) {
+			console.log(scheduled)
 			if (scheduled) {
 				scheduled = true
 				if (event.deltaY > 20 || event.keyCode == 40) {
