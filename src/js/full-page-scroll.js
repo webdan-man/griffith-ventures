@@ -153,13 +153,16 @@
 		};
 
 		this.touchStart = function (event) {
+			console.log(event.changedTouches[0].clientY)
 			mTouchStart = parseInt(event.changedTouches[0].clientY);
 			mTouchEnd = 0;
 		};
 
 		this.touchEnd = function (event) {
+			console.log(event.changedTouches[0].clientY)
 			mTouchEnd = parseInt(event.changedTouches[0].clientY);
 			if (mTouchEnd - mTouchStart > 100 || mTouchStart - mTouchEnd > 100) {
+				console.log(123)
 				if (mTouchEnd > mTouchStart) {
 					_self.defaults.currentPosition --;
 				} else {
