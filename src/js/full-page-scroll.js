@@ -168,8 +168,7 @@
 				if (mTouchEnd > mTouchStart) {
 					_self.defaults.currentPosition --;
 				} else {
-					_self.defaults.currentPosition ++;					
-				}
+					_self.defaults.currentPosition ++;}
 				_self.changeCurrentPosition(_self.defaults.currentPosition);
 			}			
 		};
