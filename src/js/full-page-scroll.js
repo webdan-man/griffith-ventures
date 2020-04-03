@@ -141,21 +141,20 @@
 		var _self = this;
 		var this_deltaY = '';
 		this.mouseWheelAndKey = function (event) {
-			console.log(event.target.closest('section').id)
 			if (this_deltaY !== event.target.closest('section').id) {
 				if (event.deltaY > 0 || event.keyCode == 40) {
 					_self.defaults.currentPosition ++;
 					_self.changeCurrentPosition(_self.defaults.currentPosition);
+					if (_self.defaults.currentPosition === 6) this_deltaY = '';
 				} else if (event.deltaY < 0 || event.keyCode == 38) {
+
 					_self.defaults.currentPosition --;
 					_self.changeCurrentPosition(_self.defaults.currentPosition);
+					if (_self.defaults.currentPosition === 0) this_deltaY = '';
 				}
 				_self.removeEvents();
 			}
 			this_deltaY = event.target.closest('section').id;
-			setTimeout(function(){
-				this_deltaY = ''
-			}, 2500);
 		};
 
 		this.touchStart = function (event) {
