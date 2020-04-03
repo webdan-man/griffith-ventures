@@ -106,7 +106,6 @@
 	 */
 	fullScroll.prototype.addEvents = function () {
 		if (document.addEventListener) {
-			console.log(555)
 			document.addEventListener('mousewheel', this.mouseWheelAndKey, false);
 			document.addEventListener('wheel', this.mouseWheelAndKey, false);
 			document.addEventListener('keyup', this.mouseWheelAndKey, false);
