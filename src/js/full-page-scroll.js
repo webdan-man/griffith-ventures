@@ -141,7 +141,7 @@
 		var _self = this;
 		var this_deltaY = '';
 		this.mouseWheelAndKey = function (event) {			
-			if (Number(_self.defaults.currentPosition) === 6 || Number(_self.defaults.currentPosition) === 0) this_deltaY = '';
+			if (Number(_self.defaults.currentPosition) === 5 || Number(_self.defaults.currentPosition) === 0) this_deltaY = '';
 			
 			if (this_deltaY !== event.target.closest('section').id) {
 				if (event.deltaY > 0 || event.keyCode == 40) {
