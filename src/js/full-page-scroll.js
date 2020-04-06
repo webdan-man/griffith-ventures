@@ -205,7 +205,7 @@
 			}
 			setTimeout(function(){
 				_self.addEvents();
-			}, 600);
+			}, 100);
 		};
 
 		this.animateScroll = function () {

@@ -30,8 +30,8 @@ html(lang="en")
                                 {index: 2, value: 'Investment Process', href: '#process'},
                                 {index: 3, value: 'Why Us', href: '#why'},
                                 {index: 4, value: 'Expertise', href: '#expertise'},
-                                {index: 5, value: 'Partners', href: '#partners'},
-                                {index: 6, value: 'Contact Us', href: '#contact'}
+                                // {index: 5, value: 'Partners', href: '#partners'},
+                                {index: 5, value: 'Contact Us', href: '#contact'}
                             ]
                         each item in list
                             li(data-index= item.index)
@@ -114,7 +114,7 @@ html(lang="en")
                                         img(src= item.img, height="48", width="48", alt="Griffith Ventures")
                                     h4= item.title
                                 p= item.text
-                    button(type="button" data-href='#contact' data-index='6').button Contact Us
+                    button(type="button" data-href='#contact' data-index='5').button Contact Us
             section.section#process
                 .wrap
                     h3 Our Investment Process
@@ -192,40 +192,40 @@ html(lang="en")
                                 .img
                                     h4= item.title
                                 p= item.text
-            section.section#partners
-                .wrap
-                    h3 Partners
-                    .block
-                        -
-                            var list = [
-                                {
-                                    img: require('../img/ethereum.png'),
-                                    text: 'The decentralized platform that runs smart contracts'
-                                },
-                                {
-                                    img: require('../img/emerald.png'),
-                                    text: 'Producer of medical cannabis with decades'
-                                },
-                                {
-                                    img: require('../img/canopy_growth.png'),
-                                    text: 'Cannabis company based in Ontario'
-                                },
-                                {
-                                    img: require('../img/hiv.png'),
-                                    text: 'Building a bridge from the blockchain sector to traditional markets'
-                                },
-                                {
-                                    img: require('../img/tilray.png'),
-                                    text: 'Canadian pharmaceutical and cannabis company'
-                                },
-                            ]
-                        each item in list
-                            .item.card
-                                .img
-                                    img(src= item.img, alt="Griffith Ventures")
-                                .group
-                                    p= item.text
-                                    a(href='./').arrow
+            //section.section#partners
+            //    .wrap
+            //        h3 Partners
+            //        .block
+            //            -
+            //                var list = [
+            //                    {
+            //                        img: require('../img/ethereum.png'),
+            //                        text: 'The decentralized platform that runs smart contracts'
+            //                    },
+            //                    {
+            //                        img: require('../img/emerald.png'),
+            //                        text: 'Producer of medical cannabis with decades'
+            //                    },
+            //                    {
+            //                        img: require('../img/canopy_growth.png'),
+            //                        text: 'Cannabis company based in Ontario'
+            //                    },
+            //                    {
+            //                        img: require('../img/hiv.png'),
+            //                        text: 'Building a bridge from the blockchain sector to traditional markets'
+            //                    },
+            //                    {
+            //                        img: require('../img/tilray.png'),
+            //                        text: 'Canadian pharmaceutical and cannabis company'
+            //                    },
+            //                ]
+            //            each item in list
+            //                .item.card
+            //                    .img
+            //                        img(src= item.img, alt="Griffith Ventures")
+            //                    .group
+            //                        p= item.text
+            //                        a(href='./').arrow
             section.section#contact
                 .wrap
                     h3 Contact Us
