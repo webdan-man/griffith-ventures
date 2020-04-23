@@ -1,12 +1,27 @@
 @media all and (max-width: 480px) {
   body {
     overflow: auto;
-    background: radial-gradient(100% 256% at 0% 0%, #393939 0%, #151515 100%);
+    position: relative;
   }
   header, section, footer {
     .wrap {
       max-width: 100%;
       padding: 0 15px;
+    }
+  }
+  #full-page {
+    background: radial-gradient(100% 256% at 0% 0%, #393939 0%, #151515 100%);
+  }
+  header {
+    position: absolute;
+    &.menu_fixed {
+      background-color: #2A2A2A;
+      padding: 10px 0;
+      position: fixed;
+      top: 0;
+      .wrap {
+        margin: 0;
+      }
     }
   }
   .menu {

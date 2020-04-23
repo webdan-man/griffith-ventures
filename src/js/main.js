@@ -28,6 +28,7 @@ const landingMain = function () {
     const createMenuNode = function () {
         document.querySelector('.menu').appendChild(header_clone);
         document.querySelector('.menu .wrap nav').appendChild(footer_social_clone);
+        mobileMenuOnScroll()
     };
 
     const mobilecheck = function(a) {
@@ -56,6 +57,24 @@ const landingMain = function () {
         }
     };
     const initFullPage = function () {
+        document.body.style.overflow = 'auto';
+        activeMenuOnScroll();
+        var timeoutId;
+        function stabilize(){
+            var posTop = document.body.scrollTop;
+            var wHeight = window.innerHeight;
+            var count = Math.floor(posTop / wHeight);
+            if (posTop >= count * wHeight + wHeight/2) {
+                $("html, body").animate({ scrollTop: (count + 1) * wHeight}, 250);
+            } else {
+                $("html, body").animate({ scrollTop: count * wHeight}, 250);
+            }
+        }
+
+        $('body').scroll(function(){
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(stabilize,1500)
+        });
         // let well = document.getElementById(fullPageId);
         // well.style.transform = 'translateY(0)';
         // well.addEventListener('wheel', function(e) {
@@ -71,30 +90,38 @@ const landingMain = function () {
         // well.addEventListener('wheel', _scrollY);
         // _swipe(well);
 
-        new fullScroll({
-
-            // parent container
-            mainElement : 'full-page',
-
-            // content section
-            sections : 'section',
-
-            // animation speed
-            animateTime : 0.3,
-
-            // easing for animation
-            animateFunction : 'ease',
-
-            // current position
-            currentPosition: 0,
-
-            // display dots navigation
-            displayDots: false,
-
-            // where to place the dots navigation
-            dotsPosition: 'left'
-
-        });
+        // new fullScroll({
+        //
+        //     // parent container
+        //     mainElement : 'full-page',
+        //
+        //     // content section
+        //     sections : 'section',
+        //
+        //     // animation speed
+        //     animateTime : 0.3,
+        //
+        //     // easing for animation
+        //     animateFunction : 'ease',
+        //
+        //     // current position
+        //     currentPosition: 0,
+        //
+        //     // display dots navigation
+        //     displayDots: false,
+        //
+        //     // where to place the dots navigation
+        //     dotsPosition: 'left'
+        //
+        // });
+    };
+    const mobileMenuOnScroll = function () {
+        $('body').scroll(function() {
+            var scrollDistance = $('body').scrollTop();
+            if (scrollDistance > 20 ) {
+                $('header').addClass('menu_fixed');
+            } else $('header').removeClass('menu_fixed');
+        }).scroll();
     };
     const activeMenuOnScroll = function () {
         $('body').scroll(function() {
