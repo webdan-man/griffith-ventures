@@ -52,28 +52,31 @@ const landingMain = function () {
                 initFullPage();
             } else {
                 document.body.style.overflow = 'auto';
-                activeMenuOnScroll();
+                // activeMenuOnScroll();
             }
         }
     };
     const initFullPage = function () {
         document.body.style.overflow = 'auto';
-        activeMenuOnScroll();
+        // activeMenuOnScroll();
         var timeoutId;
         function stabilize(){
             var posTop = document.body.scrollTop;
             var wHeight = window.innerHeight;
             var count = Math.floor(posTop / wHeight);
+            $('nav ul li a').removeClass('active');
             if (posTop >= count * wHeight + wHeight/2) {
                 $("html, body").animate({ scrollTop: (count + 1) * wHeight}, 250);
+                $('nav ul li').find('a').eq(count+1).addClass('active');
             } else {
                 $("html, body").animate({ scrollTop: count * wHeight}, 250);
+                $('nav ul li').find('a').eq(count).addClass('active');
             }
         }
 
         $('body').scroll(function(){
             clearTimeout(timeoutId);
-            timeoutId = setTimeout(stabilize,1500)
+            timeoutId = setTimeout(stabilize,1000)
         });
         // let well = document.getElementById(fullPageId);
         // well.style.transform = 'translateY(0)';
