@@ -9,6 +9,18 @@
       padding: 0 15px;
     }
   }
+  header {
+    position: absolute;
+    &.menu_fixed {
+      background-color: #2A2A2A;
+      padding: 10px 0;
+      position: fixed;
+      top: 0;
+      .wrap {
+        margin: 0;
+      }
+    }
+  }
   .menu {
     .wrap {
       padding: 30px 15px;

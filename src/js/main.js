@@ -4,16 +4,11 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 const landingMain = function () {
-    const fullPageId = 'full-page',
-        viewport = document.querySelector('meta[name="viewport"]'),
-        pnls = document.querySelectorAll('section').length,
-        topMenu = document.querySelector("header"),
-        menuItems = Array.apply(null, topMenu.querySelectorAll("a")),
+    const viewport = document.querySelector('meta[name="viewport"]'),
         header = document.querySelector('header .wrap'),
         header_clone = header.cloneNode(true),
         footer_social_clone = document.querySelector('footer .social-button').cloneNode(true),
         inputs = document.querySelectorAll('input');
-    let scdir, hold = false;
 
     const init = function () {
         mobilecheck(navigator.userAgent||navigator.vendor||window.opera);
@@ -28,6 +23,7 @@ const landingMain = function () {
     const createMenuNode = function () {
         document.querySelector('.menu').appendChild(header_clone);
         document.querySelector('.menu .wrap nav').appendChild(footer_social_clone);
+        mobileMenuOnScroll();
     };
 
     const mobilecheck = function(a) {
@@ -42,6 +38,7 @@ const landingMain = function () {
                 initFullPage();
             }
             createMenuNode();
+            activeMenuOnScroll();
         } else {
             if (document.documentElement.clientWidth <= 1440) {
                 const scale = (window.screen.width / 1440) > 1 ? 1 : window.screen.width / 1440;
@@ -56,45 +53,25 @@ const landingMain = function () {
         }
     };
     const initFullPage = function () {
-        // let well = document.getElementById(fullPageId);
-        // well.style.transform = 'translateY(0)';
-        // well.addEventListener('wheel', function(e) {
-        //     if (e.deltaY < 0) {
-        //         scdir = 'down';
-        //     }
-        //     if (e.deltaY > 0) {
-        //         scdir = 'up';
-        //     }
-        //     e.stopPropagation();
-        // });
-        //
-        // well.addEventListener('wheel', _scrollY);
-        // _swipe(well);
 
         new fullScroll({
-
-            // parent container
             mainElement : 'full-page',
-
-            // content section
             sections : 'section',
-
-            // animation speed
             animateTime : 0.3,
-
-            // easing for animation
             animateFunction : 'ease',
-
-            // current position
             currentPosition: 0,
-
-            // display dots navigation
             displayDots: false,
-
-            // where to place the dots navigation
             dotsPosition: 'left'
 
         });
+    };
+    const mobileMenuOnScroll = function () {
+        $('body').scroll(function() {
+            var scrollDistance = $('body').scrollTop();
+            if (scrollDistance > 20 ) {
+                $('header').addClass('menu_fixed');
+            } else $('header').removeClass('menu_fixed');
+        }).scroll();
     };
     const activeMenuOnScroll = function () {
         $('body').scroll(function() {
@@ -106,82 +83,6 @@ const landingMain = function () {
                 }
             });
         }).scroll();
-    };
-
-    const _scrollY = function (obj, e) {
-        let slength, plength, pan, step = 100, vh = window.innerHeight / 100, vmin = Math.min(window.innerHeight, window.innerWidth) / 100, id;
-        try {
-            id = obj.target.id || obj.target.closest('section').id;
-        } catch (er) {
-            id = e.target.closest('section').id;
-        }
-        let index = menuItems.findIndex((item) => item.getAttribute("href").slice(1) === id);
-
-        if ((this !== undefined && this.id === fullPageId) || (obj !== undefined && obj.id === fullPageId)) {
-            pan = this || obj;
-            plength = parseInt(pan.offsetHeight / vh);
-        }
-        if (pan === undefined) {
-            return;
-        }
-
-        plength = plength || parseInt(pan.offsetHeight / vmin);
-        slength = parseInt(pan.style.transform.replace('translateY(', ''));
-        if (scdir === 'up' && Math.abs(slength) < (plength - plength / pnls)) {
-            slength = slength - step;
-            menuItems.forEach(item => item.classList.remove("active"));
-            menuItems[index + 1].classList.add("active");
-        } else if (scdir === 'down' && slength < 0) {
-            slength = slength + step;
-            menuItems.forEach(item => item.classList.remove("active"));
-            menuItems[index - 1].classList.add("active")
-        }
-        if (hold === false) {
-            hold = true;
-            pan.style.transform = 'translateY(' + slength + 'vh)';
-            setTimeout(function() {
-                hold = false;
-            }, 1000);
-        }
-    };
-    const _swipe = function (obj) {
-        let swdir, sX, sY, dX, dY, threshold = 100, slack = 50, alT = 500, elT, stT;
-        obj.addEventListener('touchstart', function(e) {
-            let tchs = e.changedTouches[0];
-            swdir = 'none';
-            sX = tchs.pageX;
-            sY = tchs.pageY;
-            stT = new Date().getTime();
-        }, false);
-
-        obj.addEventListener('touchmove', function(e) {
-            e.preventDefault();
-        }, false);
-
-        obj.addEventListener('touchend', function(e) {
-            let tchs = e.changedTouches[0];
-            dX = tchs.pageX - sX;
-            dY = tchs.pageY - sY;
-            elT = new Date().getTime() - stT;
-            if (elT <= alT) {
-                if (Math.abs(dX) >= threshold && Math.abs(dY) <= slack) {
-                    swdir = (dX < 0) ? 'left' : 'right';
-                } else if (Math.abs(dY) >= threshold && Math.abs(dX) <= slack) {
-                    swdir = (dY < 0) ? 'up' : 'down';
-                }
-                if (obj.id === fullPageId) {
-                    if (swdir === 'up') {
-                        scdir = swdir;
-                        _scrollY(obj, e);
-                    } else if (swdir === 'down' && obj.style.transform !== 'translateY(0)') {
-                        scdir = swdir;
-                        _scrollY(obj, e);
-
-                    }
-                    e.stopPropagation();
-                }
-            }
-        }, false);
     };
     const inputAction = function () {
         inputs.forEach(function (item) {
@@ -239,7 +140,7 @@ $(document).ready(function(){
         $('#success.section .button').click(function () {
             $('nav ul li a').removeClass('active');
             $('nav ul li').find('a[href="' + $(this).data('href') + '"]').addClass('active');
-            $("html, body").animate({ scrollTop: $($(this).attr('href')).offset().top + document.body.scrollTop}, 1000);
+            $("html, body").animate({ scrollTop: $($(this).data('href')).offset().top + document.body.scrollTop}, 1000);
         });
     } else {
         $('nav ul li a').click(function (e) {
@@ -251,13 +152,24 @@ $(document).ready(function(){
             $('nav ul li a').removeClass('active');
             $(this).addClass('active');
             location.hash = $(this).closest('li').data('index');
-            // document.querySelector('#full-page').style.transform = 'translateY(-' + (Array.apply(null, document.querySelector("header").querySelectorAll("a")).findIndex((item) => item.getAttribute("href") === $(this).attr('href')) - 1) * 100 + 'vh)';
             document.querySelector('.menu').classList.remove('open');
         });
-        $('#success.section .button').click(function () {
-            $('nav ul li a').removeClass('active');
-            $('nav ul li').find('a[href="' + $(this).data('href') + '"]').addClass('active');
-            location.hash = '#' + $(this).data('index');
+        $('#success.section .button, footer .button').click(function () {
+            var menuLinkArray = $('nav ul li a'),
+                dataIndex = $(this).data('index'),
+                $footerButton = $('footer .button'),
+                buttonList = menuLinkArray.map((index, item) => ({
+                    href: $(item).attr('href'),
+                    index: $(item).closest('li').data('index')
+                }));
+            if (buttonList[Number(dataIndex)+1]) {
+                $footerButton.data('href', buttonList[Number(dataIndex)+1].href);
+                $footerButton.data('index', buttonList[Number(dataIndex)+1].index);
+            }
+            $footerButton.css('display', Number(dataIndex) === 5 ? 'none' : 'inline-block');
+            menuLinkArray.removeClass('active');
+            menuLinkArray.closest('li').find('a[href="' + $(this).data('href') + '"]').addClass('active');
+            location.hash = '#' + dataIndex;
             if (document.documentElement.clientHeight < 600) {
                 $("html, body").animate({scrollTop: $(this).data('index') * 600}, 1000)
             }
@@ -267,14 +179,6 @@ $(document).ready(function(){
         var self = $(this);
         $('.carousel').slick('slickGoTo', Number(self.data('index')));
     });
-    // if (location.hash) {
-    //     $("html, body").animate({ scrollTop: $(location.hash).offset().top }, 1000);
-    //     $('nav ul li a').removeClass('active');
-    //     $('nav ul li').find('a'+ '[href="' + location.hash + '"]').addClass('active')
-    // } else {
-    //     $("html, body").animate({ scrollTop: $('#home').offset().top }, 1000);
-    // }
-
     $('#contact .block button').click(function () {
         $('#contact .block button').removeClass('active');
         $(this).addClass('active')

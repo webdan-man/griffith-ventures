@@ -142,7 +142,7 @@
 		var this_deltaY = '';
 		this.mouseWheelAndKey = function (event) {			
 			if (Number(_self.defaults.currentPosition) === 5 || Number(_self.defaults.currentPosition) === 0) this_deltaY = '';
-			
+
 			if (this_deltaY !== event.target.closest('section').id) {
 				if (event.deltaY > 0 || event.keyCode == 40) {
 					_self.defaults.currentPosition ++;
@@ -230,11 +230,22 @@
 
 		this.changeCurrentPosition = function (position) {
 			if (position !== "") {
-				Array.apply(null, document.querySelectorAll('nav ul li a')).forEach(item => item.classList.remove('active'));
-				var element = Array.apply(null, document.querySelectorAll('nav ul li a')).find(item => Number(item.closest('li').getAttribute('data-index')) === Number(position));
+				var menuLinkArray = Array.apply(null, document.querySelectorAll('nav ul li a')),
+					$footerButton = document.querySelector('footer .button'),
+					element = menuLinkArray.find(item => Number(item.closest('li').getAttribute('data-index')) === Number(position)),
+					buttonList = menuLinkArray.map((item) => ({
+						href: item.getAttribute('href'),
+						index: item.closest('li').getAttribute('data-index')
+					}));
+				menuLinkArray.forEach(item => item.classList.remove('active'));
 				if (element) {
 					element.classList.add('active');
 				}
+				if (position < menuLinkArray.length - 1) {
+					$footerButton.setAttribute('data-href', buttonList[Number(position)+1].href);
+					$footerButton.setAttribute('data-index', buttonList[Number(position)+1].index);
+				}
+				$footerButton.style.display = Number(position) === 5 ? 'none' : 'inline-block';
 				_self.defaults.currentPosition = position;
 				location.hash = _self.defaults.currentPosition;
 			}
