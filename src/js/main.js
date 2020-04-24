@@ -4,16 +4,11 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 const landingMain = function () {
-    const fullPageId = 'full-page',
-        viewport = document.querySelector('meta[name="viewport"]'),
-        pnls = document.querySelectorAll('section').length,
-        topMenu = document.querySelector("header"),
-        menuItems = Array.apply(null, topMenu.querySelectorAll("a")),
+    const viewport = document.querySelector('meta[name="viewport"]'),
         header = document.querySelector('header .wrap'),
         header_clone = header.cloneNode(true),
         footer_social_clone = document.querySelector('footer .social-button').cloneNode(true),
         inputs = document.querySelectorAll('input');
-    let scdir, hold = false;
 
     const init = function () {
         mobilecheck(navigator.userAgent||navigator.vendor||window.opera);
@@ -57,11 +52,12 @@ const landingMain = function () {
     };
     const initFullPage = function () {
         document.body.style.overflow = 'auto';
-        var timeoutId;
+        var timeoutId,
+            sectionNumber = document.querySelectorAll('section').length,
+            wHeight = window.innerHeight;
         function stabilize(){
-            var posTop = document.body.scrollTop;
-            var wHeight = window.innerHeight;
-            var count = Math.floor(posTop / wHeight);
+            const posTop = document.body.scrollTop;
+            const count = Math.floor(posTop / wHeight);
             $('nav ul li a').removeClass('active');
             if (posTop >= count * wHeight + wHeight/2) {
                 $("html, body").animate({ scrollTop: (count + 1) * wHeight}, 250);
@@ -69,14 +65,31 @@ const landingMain = function () {
             } else {
                 $("html, body").animate({ scrollTop: count * wHeight}, 250);
                 $('nav ul li').find('a').eq(count).addClass('active');
+                updateScrollButton()
             }
         }
+        document.querySelector('footer .button').style.display =  (document.body.scrollTop >= (sectionNumber - 1) * wHeight) ? 'none' : 'inline-block';
 
         $('body').scroll(function(){
+            document.querySelector('footer .button').style.display =  (document.body.scrollTop >= (sectionNumber - 1) * wHeight) ? 'none' : 'inline-block';
             clearTimeout(timeoutId);
-            timeoutId = setTimeout(stabilize,1000)
+            timeoutId = setTimeout(stabilize,500)
         });
     };
+    const updateScrollButton = function () {
+        var $footerButton = $('footer .button');
+        const buttonList = $('nav ul li').map((index, item) => ({
+            href: $(item).find('a').attr('href'),
+            index: $(item).data('index'),
+            active: $(item).find('a').hasClass('active')
+        }));
+        $.each(buttonList, function( key, value ) {
+            if (value.active && buttonList[key+1]) {
+                $footerButton.data('href', buttonList[key+1].href)
+                $footerButton.data('index', buttonList[key+1].index)
+            }
+        });
+    }
     const mobileMenuOnScroll = function () {
         $('body').scroll(function() {
             var scrollDistance = $('body').scrollTop();
@@ -84,93 +97,6 @@ const landingMain = function () {
                 $('header').addClass('menu_fixed');
             } else $('header').removeClass('menu_fixed');
         }).scroll();
-    };
-    const activeMenuOnScroll = function () {
-        $('body').scroll(function() {
-            var scrollDistance = $(window).scrollTop() - 35;
-            $('section').each(function(i) {
-                if ($(this).position().top <= scrollDistance) {
-                    $('nav a.active').removeClass('active');
-                    $('nav a').eq(i).addClass('active');
-                }
-            });
-        }).scroll();
-    };
-
-    const _scrollY = function (obj, e) {
-        let slength, plength, pan, step = 100, vh = window.innerHeight / 100, vmin = Math.min(window.innerHeight, window.innerWidth) / 100, id;
-        try {
-            id = obj.target.id || obj.target.closest('section').id;
-        } catch (er) {
-            id = e.target.closest('section').id;
-        }
-        let index = menuItems.findIndex((item) => item.getAttribute("href").slice(1) === id);
-
-        if ((this !== undefined && this.id === fullPageId) || (obj !== undefined && obj.id === fullPageId)) {
-            pan = this || obj;
-            plength = parseInt(pan.offsetHeight / vh);
-        }
-        if (pan === undefined) {
-            return;
-        }
-
-        plength = plength || parseInt(pan.offsetHeight / vmin);
-        slength = parseInt(pan.style.transform.replace('translateY(', ''));
-        if (scdir === 'up' && Math.abs(slength) < (plength - plength / pnls)) {
-            slength = slength - step;
-            menuItems.forEach(item => item.classList.remove("active"));
-            menuItems[index + 1].classList.add("active");
-        } else if (scdir === 'down' && slength < 0) {
-            slength = slength + step;
-            menuItems.forEach(item => item.classList.remove("active"));
-            menuItems[index - 1].classList.add("active")
-        }
-        if (hold === false) {
-            hold = true;
-            pan.style.transform = 'translateY(' + slength + 'vh)';
-            setTimeout(function() {
-                hold = false;
-            }, 1000);
-        }
-    };
-    const _swipe = function (obj) {
-        let swdir, sX, sY, dX, dY, threshold = 100, slack = 50, alT = 500, elT, stT;
-        obj.addEventListener('touchstart', function(e) {
-            let tchs = e.changedTouches[0];
-            swdir = 'none';
-            sX = tchs.pageX;
-            sY = tchs.pageY;
-            stT = new Date().getTime();
-        }, false);
-
-        obj.addEventListener('touchmove', function(e) {
-            e.preventDefault();
-        }, false);
-
-        obj.addEventListener('touchend', function(e) {
-            let tchs = e.changedTouches[0];
-            dX = tchs.pageX - sX;
-            dY = tchs.pageY - sY;
-            elT = new Date().getTime() - stT;
-            if (elT <= alT) {
-                if (Math.abs(dX) >= threshold && Math.abs(dY) <= slack) {
-                    swdir = (dX < 0) ? 'left' : 'right';
-                } else if (Math.abs(dY) >= threshold && Math.abs(dX) <= slack) {
-                    swdir = (dY < 0) ? 'up' : 'down';
-                }
-                if (obj.id === fullPageId) {
-                    if (swdir === 'up') {
-                        scdir = swdir;
-                        _scrollY(obj, e);
-                    } else if (swdir === 'down' && obj.style.transform !== 'translateY(0)') {
-                        scdir = swdir;
-                        _scrollY(obj, e);
-
-                    }
-                    e.stopPropagation();
-                }
-            }
-        }, false);
     };
     const inputAction = function () {
         inputs.forEach(function (item) {
@@ -226,7 +152,12 @@ $(document).ready(function(){
     $('#success.section .button').click(function () {
         $('nav ul li a').removeClass('active');
         $('nav ul li').find('a[href="' + $(this).data('href') + '"]').addClass('active');
-        $("html, body").animate({ scrollTop: $($(this).attr('href')).offset().top + document.body.scrollTop}, 1000);
+        $("html, body").animate({ scrollTop: $($(this).data('href')).offset().top + document.body.scrollTop}, 1000);
+    });
+    $('footer .button').click(function () {
+        $('nav ul li a').removeClass('active');
+        $('nav ul li').find('a[href="' + $(this).data('href') + '"]').addClass('active');
+        $("html, body").animate({ scrollTop: $($(this).data('href')).offset().top + document.body.scrollTop}, 1000);
     });
     $('.carousel .list-group .item').on('click', function() {
         var self = $(this);

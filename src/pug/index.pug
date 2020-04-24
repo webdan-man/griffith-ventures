@@ -30,7 +30,6 @@ html(lang="en")
                                 {index: 2, value: 'Investment Process', href: '#process'},
                                 {index: 3, value: 'Why Us', href: '#why'},
                                 {index: 4, value: 'Expertise', href: '#expertise'},
-                                // {index: 5, value: 'Partners', href: '#partners'},
                                 {index: 5, value: 'Contact Us', href: '#contact'}
                             ]
                         each item in list
@@ -210,7 +209,7 @@ html(lang="en")
                         button.button(type='submit') Join the network
         footer
             .wrap
-                .button
+                .button(data-href='#success' data-index='1')
                     span Scroll down
                 .social-button
                     a(href='./').facebook
