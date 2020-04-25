@@ -143,7 +143,7 @@
 		this.mouseWheelAndKey = function (event) {			
 			if (Number(_self.defaults.currentPosition) === 5 || Number(_self.defaults.currentPosition) === 0) this_deltaY = '';
 
-			if (this_deltaY !== event.target.closest('section').id) {
+			if (event.target.closest('section') && this_deltaY !== event.target.closest('section').id) {
 				if (event.deltaY > 0 || event.keyCode == 40) {
 					_self.defaults.currentPosition ++;
 					_self.changeCurrentPosition(_self.defaults.currentPosition);
@@ -245,7 +245,8 @@
 					$footerButton.setAttribute('data-href', buttonList[Number(position)+1].href);
 					$footerButton.setAttribute('data-index', buttonList[Number(position)+1].index);
 				}
-				$footerButton.style.display = Number(position) === 5 ? 'none' : 'inline-block';
+				console.log(Number(position))
+				$footerButton.style.display = Number(position) >= 5 ? 'none' : 'inline-block';
 				_self.defaults.currentPosition = position;
 				location.hash = _self.defaults.currentPosition;
 			}
