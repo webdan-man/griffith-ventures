@@ -153,7 +153,7 @@
 				}
 				_self.removeEvents();
 			}
-			this_deltaY = event.target.closest('section').id;
+			this_deltaY = event.target.closest('section') && event.target.closest('section').id;
 		};
 
 		this.touchStart = function (event) {
@@ -245,7 +245,6 @@
 					$footerButton.setAttribute('data-href', buttonList[Number(position)+1].href);
 					$footerButton.setAttribute('data-index', buttonList[Number(position)+1].index);
 				}
-				console.log(Number(position))
 				$footerButton.style.display = Number(position) >= 5 ? 'none' : 'inline-block';
 				_self.defaults.currentPosition = position;
 				location.hash = _self.defaults.currentPosition;

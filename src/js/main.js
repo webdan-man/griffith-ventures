@@ -144,35 +144,48 @@ $(document).ready(function(){
     } else {
         $('nav ul li a').click(function (e) {
             e.preventDefault();
+
             if (document.documentElement.clientHeight < 600) {
                 location.hash = '#' + $(this).closest('li').data('index');
                 $("html, body").animate({scrollTop: $(this).closest('li').data('index') * 600}, 1000)
             }
+
             $('nav ul li a').removeClass('active');
             $(this).addClass('active');
             location.hash = $(this).closest('li').data('index');
+
+            scrollButtonChange($(this).closest('li').data('index'));
+
             document.querySelector('.menu').classList.remove('open');
         });
         $('#success.section .button, footer .button').click(function () {
             var menuLinkArray = $('nav ul li a'),
-                dataIndex = $(this).data('index'),
-                $footerButton = $('footer .button'),
-                buttonList = menuLinkArray.map((index, item) => ({
-                    href: $(item).attr('href'),
-                    index: $(item).closest('li').data('index')
-                }));
-            if (buttonList[Number(dataIndex)+1]) {
-                $footerButton.data('href', buttonList[Number(dataIndex)+1].href);
-                $footerButton.data('index', buttonList[Number(dataIndex)+1].index);
-            }
-            $footerButton.css('display', Number(dataIndex) === 5 ? 'none' : 'inline-block');
+                dataIndex = $(this).data('index');
+
             menuLinkArray.removeClass('active');
             menuLinkArray.closest('li').find('a[href="' + $(this).data('href') + '"]').addClass('active');
             location.hash = '#' + dataIndex;
+
+            scrollButtonChange(dataIndex);
+
             if (document.documentElement.clientHeight < 600) {
                 $("html, body").animate({scrollTop: $(this).data('index') * 600}, 1000)
             }
         });
+    }
+    function scrollButtonChange(dataIndex) {
+        var $footerButton = $('footer .button'),
+            menuLinkArray = $('nav ul li a'),
+            buttonList = menuLinkArray.map((index, item) => ({
+                href: $(item).attr('href'),
+                index: $(item).closest('li').data('index')
+            }));
+        $footerButton.css('display', Number(dataIndex) >= 5 ? 'none' : 'inline-block');
+        
+        if (buttonList[Number(dataIndex)+1]) {
+            $footerButton.data('href', buttonList[Number(dataIndex)+1].href);
+            $footerButton.data('index', buttonList[Number(dataIndex)+1].index);
+        }
     }
     $('.carousel .list-group .item').on('click', function() {
         var self = $(this);
