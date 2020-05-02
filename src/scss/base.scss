@@ -6,6 +6,9 @@
 a:after,a:before,br:after,br:before,img:after,img:before,span:after,span:before,sup:after,sup:before,table:after,table:before,td:after,td:before,tr:after,tr:before{content:none}
 a{text-decoration:none;color:inherit;outline:0!important}
 button,input,textarea{outline:0; background: none; border: none;-webkit-tap-highlight-color: rgba(0,0,0,0)}
+html {
+  background: radial-gradient(100% 256% at 0% 0%, #393939 0%, #151515 100%);
+}
 body {
   //overflow: hidden;
   background: radial-gradient(100% 256% at 0% 0%, #393939 0%, #151515 100%);
