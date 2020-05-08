@@ -1,3 +1,3 @@
 # Griffith Ventures
-** development ```npm run start```
-** production ```npm run build```
+## development ```npm run start```
+## production ```npm run build```
